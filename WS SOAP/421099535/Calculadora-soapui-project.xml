@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="7ecd3d84-418a-4a4f-a428-4598b3a55eaa" activeEnvironment="Default" name="Calculadora" resourceRoot="" soapui-version="5.7.2" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="90f2e1e5-506d-464f-95ae-fd7b6a31299c" wsaVersion="NONE" name="Application" type="wsdl" bindingName="{spyne.examples.calculator}Application" soapVersion="1_1" anonymous="optional" definition="http://127.0.0.1:8000/?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://127.0.0.1:8000/?wsdl"><con:part><con:url>http://127.0.0.1:8000/?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="spyne.examples.calculator" name="Application" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:plink="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdlsoap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap11enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap11env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12env="http://www.w3.org/2003/05/soap-envelope" xmlns:soap12enc="http://www.w3.org/2003/05/soap-encoding" xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="spyne.examples.calculator">
+  <wsdl:types>
+    <xs:schema targetNamespace="spyne.examples.calculator" elementFormDefault="qualified">
+      <xs:complexType name="add">
+        <xs:sequence>
+          <xs:element name="a" type="xs:integer" minOccurs="0" nillable="true"/>
+          <xs:element name="b" type="xs:integer" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addResponse">
+        <xs:sequence>
+          <xs:element name="addResult" type="xs:integer" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="add" type="tns:add"/>
+      <xs:element name="addResponse" type="tns:addResponse"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="add">
+    <wsdl:part name="add" element="tns:add"/>
+  </wsdl:message>
+  <wsdl:message name="addResponse">
+    <wsdl:part name="addResponse" element="tns:addResponse"/>
+  </wsdl:message>
+  <wsdl:service name="CalculatorService">
+    <wsdl:port name="Application" binding="tns:Application">
+      <wsdlsoap11:address location="http://127.0.0.1:8000/"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:portType name="Application">
+    <wsdl:operation name="add" parameterOrder="add">
+      <wsdl:input name="add" message="tns:add"/>
+      <wsdl:output name="addResponse" message="tns:addResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Application" type="tns:Application">
+    <wsdlsoap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="add">
+      <wsdlsoap11:operation soapAction="add" style="document"/>
+      <wsdl:input name="add">
+        <wsdlsoap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addResponse">
+        <wsdlsoap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://127.0.0.1:8000/</con:endpoint></con:endpoints><con:operation id="ad351189-e664-492e-8845-93e0f6ea7bb3" isOneWay="false" action="add" name="add" bindingOperationName="add" type="Request-Response" outputName="addResponse" inputName="add" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ade59352-bfbf-4501-9de1-b0c21b3eff6d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://127.0.0.1:8000/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spy="spyne.examples.calculator">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <spy:add>\r
+         <!--Optional:-->\r
+         <spy:a>5</spy:a>\r
+         <!--Optional:-->\r
+         <spy:b>10</spy:b>\r
+      </spy:add>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="add"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="c5af9044-9137-4541-8fa8-5bd455f263c5" activeEnvironment="Default" name="conv_moneda" resourceRoot="" soapui-version="5.7.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="944f753d-6948-42df-915c-30cc32b3c602" wsaVersion="NONE" name="Application" type="wsdl" bindingName="{spyne.examples.currency_converter}Application" soapVersion="1_1" anonymous="optional" definition="http://127.0.0.1:8000/?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://127.0.0.1:8000/?wsdl"><con:part><con:url>http://127.0.0.1:8000/?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="spyne.examples.currency_converter" name="Application" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:plink="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdlsoap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap11enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap11env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12env="http://www.w3.org/2003/05/soap-envelope" xmlns:soap12enc="http://www.w3.org/2003/05/soap-encoding" xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="spyne.examples.currency_converter">
+  <wsdl:types>
+    <xs:schema targetNamespace="spyne.examples.currency_converter" elementFormDefault="qualified">
+      <xs:complexType name="convert">
+        <xs:sequence>
+          <xs:element name="amount" type="xs:float" minOccurs="0" nillable="true"/>
+          <xs:element name="from_currency" type="xs:string" minOccurs="0" nillable="true"/>
+          <xs:element name="to_currency" type="xs:string" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="convertResponse">
+        <xs:sequence>
+          <xs:element name="convertResult" type="xs:float" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="convert" type="tns:convert"/>
+      <xs:element name="convertResponse" type="tns:convertResponse"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="convert">
+    <wsdl:part name="convert" element="tns:convert"/>
+  </wsdl:message>
+  <wsdl:message name="convertResponse">
+    <wsdl:part name="convertResponse" element="tns:convertResponse"/>
+  </wsdl:message>
+  <wsdl:service name="CurrencyConverterService">
+    <wsdl:port name="Application" binding="tns:Application">
+      <wsdlsoap11:address location="http://127.0.0.1:8000/"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:portType name="Application">
+    <wsdl:operation name="convert" parameterOrder="convert">
+      <wsdl:input name="convert" message="tns:convert"/>
+      <wsdl:output name="convertResponse" message="tns:convertResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Application" type="tns:Application">
+    <wsdlsoap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="convert">
+      <wsdlsoap11:operation soapAction="convert" style="document"/>
+      <wsdl:input name="convert">
+        <wsdlsoap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertResponse">
+        <wsdlsoap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://127.0.0.1:8000/</con:endpoint></con:endpoints><con:operation id="0004f9ad-e5fb-407d-88ca-04eb285bfd44" isOneWay="false" action="convert" name="convert" bindingOperationName="convert" type="Request-Response" outputName="convertResponse" inputName="convert" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cb473f7b-d93f-44dd-9e47-fe59ca54f51b" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://127.0.0.1:8000/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spy="spyne.examples.currency_converter">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <spy:convert>\r
+         <!--Optional:-->\r
+         <spy:amount>1000</spy:amount>\r
+         <!--Optional:-->\r
+         <spy:from_currency>MXN</spy:from_currency>\r
+         <!--Optional:-->\r
+         <spy:to_currency>EUR</spy:to_currency>\r
+      </spy:convert>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="convert"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
